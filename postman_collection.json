@@ -1,0 +1,181 @@
+{
+  "info": {
+    "name": "ResQGrid Disaster Response Coordination API",
+    "description": "Postman Collection for ResQGrid - Founding Engineer Take Home Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "2. Auth - Login as Contributor Alice",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"alice@resqgrid.org\",\n  \"password\": \"ContribPass123!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "3. Auth - Login as Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@resqgrid.org\",\n  \"password\": \"AdminPass123!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "4. Disasters - Create with Description Location Resolution",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Flooding in Lower Manhattan\",\n  \"description\": \"Heavy flooding has affected Manhattan, NYC following sudden torrential rains.\",\n  \"tags\": [\"flood\", \"water\", \"evacuation\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/disasters",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters"]
+        }
+      }
+    },
+    {
+      "name": "5. Disasters - List All (Filter by Tag)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/disasters?tag=flood",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters"],
+          "query": [{ "key": "tag", "value": "flood" }]
+        }
+      }
+    },
+    {
+      "name": "6. Disasters - Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/disasters/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters", ":id"]
+        }
+      }
+    },
+    {
+      "name": "7. Disasters - Patch Status (PATCH /disasters/:id)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"contained\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/disasters/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters", ":id"]
+        }
+      }
+    },
+    {
+      "name": "8. Nearby Resources (GET /disasters/:id/resources?radius=2)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/disasters/:id/resources?radius=2",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters", ":id", "resources"],
+          "query": [{ "key": "radius", "value": "2" }]
+        }
+      }
+    },
+    {
+      "name": "9. Nearby Resources with Explicit Lat/Lng (GET /disasters/:id/resources?lat=40.7831&lng=-73.9712&radius=2)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/disasters/:id/resources?lat=40.7831&lng=-73.9712&radius=2",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters", ":id", "resources"],
+          "query": [
+            { "key": "lat", "value": "40.7831" },
+            { "key": "lng", "value": "-73.9712" },
+            { "key": "radius", "value": "2" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "10. Community Reports (GET /disasters/:id/reports)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/disasters/:id/reports",
+          "host": ["{{baseUrl}}"],
+          "path": ["disasters", ":id", "reports"]
+        }
+      }
+    },
+    {
+      "name": "11. Admin - List All Users (GET /users)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": ["{{baseUrl}}"],
+          "path": ["users"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "adminToken", "value": "" }
+  ]
+}

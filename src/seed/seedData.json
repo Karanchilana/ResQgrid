@@ -1,0 +1,116 @@
+{
+  "users": [
+    {
+      "name": "Emergency Operations Admin",
+      "email": "admin@resqgrid.org",
+      "password": "AdminPass123!",
+      "role": "admin"
+    },
+    {
+      "name": "Field Volunteer Alice",
+      "email": "alice@resqgrid.org",
+      "password": "ContribPass123!",
+      "role": "contributor"
+    },
+    {
+      "name": "Field Volunteer Bob",
+      "email": "bob@resqgrid.org",
+      "password": "ContribPass123!",
+      "role": "contributor"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Manhattan Central General Hospital",
+      "type": "hospital",
+      "capacity": 300,
+      "contact": "+1-212-555-0199",
+      "status": "available",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.9715, 40.7835]
+      }
+    },
+    {
+      "name": "Upper West Side Emergency Shelter",
+      "type": "shelter",
+      "capacity": 500,
+      "contact": "+1-212-555-0142",
+      "status": "available",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.9780, 40.7820]
+      }
+    },
+    {
+      "name": "Manhattan Water & Rations Distribution Center",
+      "type": "water",
+      "capacity": 2500,
+      "contact": "+1-212-555-0188",
+      "status": "available",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.9740, 40.7850]
+      }
+    },
+    {
+      "name": "FDNY Urban Search & Rescue Unit 1",
+      "type": "rescue",
+      "capacity": 50,
+      "contact": "+1-212-555-0123",
+      "status": "available",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.9680, 40.7810]
+      }
+    },
+    {
+      "name": "Midtown Food Relief Depot",
+      "type": "food",
+      "capacity": 1500,
+      "contact": "+1-212-555-0166",
+      "status": "limited",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.9850, 40.7580]
+      }
+    },
+    {
+      "name": "Long Island Regional Care Facility",
+      "type": "hospital",
+      "capacity": 120,
+      "contact": "+1-516-555-0111",
+      "status": "available",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.5000, 40.7500]
+      }
+    }
+  ],
+  "disasters": [
+    {
+      "title": "Severe Flash Flooding - Manhattan",
+      "description": "Heavy flooding has affected Manhattan, NYC following torrential rainfall.",
+      "locationName": "Manhattan, NYC",
+      "tags": ["flood", "water", "evacuation"],
+      "status": "active",
+      "creatorEmail": "alice@resqgrid.org"
+    },
+    {
+      "title": "Electrical Grid Fire - Brooklyn",
+      "description": "Substation explosion causing transformer fire in Brooklyn, NYC.",
+      "locationName": "Brooklyn, NYC",
+      "tags": ["fire", "hazard", "power"],
+      "status": "active",
+      "creatorEmail": "bob@resqgrid.org"
+    },
+    {
+      "title": "Unconfirmed Storm Damage Report",
+      "description": "Reports of downed trees and blocked trails in Remote Canyon Sector Z.",
+      "locationName": "Remote Canyon Sector Z",
+      "tags": ["storm", "survey"],
+      "status": "active",
+      "creatorEmail": "alice@resqgrid.org"
+    }
+  ]
+}
